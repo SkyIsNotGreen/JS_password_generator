@@ -13,39 +13,40 @@ const getPasswordLength = () => {
   //test if user input is a number and within the correct parameters, if not, discard and stop
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     alert("Incorrect value, please choose a valid number.");
-    return null;
-  };
+    location.reload();
+  }
   //if user input is within specified parameters, save in storage
   return parseInt(passwordLength);
 };
 
 //password options, array is created based on answers
-const getPasswordCriteria = () => {
+const getPasswordOptions = () => {
  
- const alphaLower = confirm("Would you like your password to include lowercase letters?");
- const alphaUpper = confirm("Would you like your password to include uppercase letters?");
- const numbers = confirm("Would you like your password to include numbers?");
- const special = confirm("Would you like your password to include special characters?");
+ const confirmLower = confirm("Would you like your password to include lowercase letters?");
+ 
+ const confirmUpper = confirm("Would you like your password to include uppercase letters?");
+ 
+ const confirmNumbers = confirm("Would you like your password to include numbers?");
+ 
+ const confirmSpecial = confirm("Would you like your password to include special characters?");
+ 
  const passwordOptions = [];
 
- if (alphaLower) {
+ if (confirmLower) {
    passwordOptions.push(alphaLower);
  }
- if (alphaUpper) {
+ if (confirmUpper) {
    passwordOptions.push(alphaUpper);
  }
- if (numbers) {
+ if (confirmNumbers) {
    passwordOptions.push(numbers);
  }
- if (special) {
+ if (confirmSpecial) {
    passwordOptions.push(special);
  }
  return passwordOptions;
 };
 
-const createRandomPassword = () => {
-  return "kdUE28(@d0";
-};
 
 // main function to generate the random password
 const generatePassword = () => {
@@ -53,10 +54,10 @@ const generatePassword = () => {
   const passwordLength = getPasswordLength();
 
   // get the password criteria
-  const passwordCriteria = getPasswordCriteria();
+  const passwordOptions = getPasswordOptions();
 
   // create random password
-  const password = createRandomPassword(passwordLength, passwordCriteria);
+  const password = createRandomPassword(passwordLength, passwordOptions);
 
   return password;
 };
