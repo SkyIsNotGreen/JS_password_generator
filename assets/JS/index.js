@@ -2,7 +2,7 @@
 const generateBtn = document.querySelector("#generate");
 
 const getPasswordLength = () => {
-  return 10;
+  const userInput = prompt("Please choose password length.", "18")
 };
 
 const getPasswordCriteria = () => {
