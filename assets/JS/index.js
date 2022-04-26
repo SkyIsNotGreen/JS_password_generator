@@ -17,7 +17,6 @@ if (passwordLength) {
 // get the password criteria
   const passwordCriteria = getPasswordCriteria();
 //test if user input is a number and within the correct parameters
- 
     if (Number.isNaN(passwordLength)) {
       alert("Incorrect value, please choose a valid number.");
       return false;
@@ -108,7 +107,7 @@ const createRandomPassword = (passwordLength, passwordOptions) => {
 
 // Write password to the #password input
 const writePassword = () => {
-  const password = generatePassword();
+  const password = generatePassword() || "";
   const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
