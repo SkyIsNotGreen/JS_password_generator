@@ -13,28 +13,22 @@ const generatePassword = () => {
 // get the password length
 const passwordLength = getPasswordLength();
 
-if(passwordLength) {
+if (passwordLength) {
 // get the password criteria
   const passwordCriteria = getPasswordCriteria();
 //test if user input is a number and within the correct parameters
-  if(passwordCriteria.length === 0){
-      alert("Password length must be a number between 8-128.")
-
-  }  
-    if(Number.isNaN(passwordLength)) {
+ 
+    if (Number.isNaN(passwordLength)) {
       alert("Incorrect value, please choose a valid number.");
-      }else{
+      return false;
 
-      // create random password
-     const password = createRandomPassword(passwordLength, passwordCriteria);
-      return password;
+      } else {
+        // create random password
+        const password = createRandomPassword(passwordLength, passwordCriteria);
+        return password;
       };
-
-      }else{
-          // when user input is incorrect 
-      alert("Please try again.")
-      }
-      };
+    }
+  }
 
 // get password length
 const getPasswordLength = () => {
@@ -42,8 +36,9 @@ const getPasswordLength = () => {
   const passLength = prompt("Please choose password length between 8 and 128.", "18");
 
   const determinePassLength = parseInt (passLength, 10);
+// if you input something other than what is specified you will run into an error
+  if (determinePassLength >= 8 && determinePassLength <= 128){
 
-  if (determinePassLength >=8 && determinePassLength <= 128){
 } else {
     alert ("Password length must be a number between 8-128.");
     return false;
@@ -97,7 +92,7 @@ return passwordOptions;
 //
 const createRandomPassword = (passwordLength, passwordOptions) => {
   const passwordArray =[];
-  for(let i = 0; i < passwordLength; i+=1){
+  for (let i = 0; i < passwordLength; i+=1){
   // select random categories from the array
   const randomCategoryElement = Math.floor(Math.random() * passwordOptions.length);
   // getting random categories 
